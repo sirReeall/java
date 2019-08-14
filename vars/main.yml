@@ -1,0 +1,3 @@
+---
+# vars file for java
+isInstalled_version: "{{ java_version }}.0.{{ java_update }}"

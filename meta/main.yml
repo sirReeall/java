@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: sirReeall
+  description: Instal Java from download.java.net
+
+  license: license free
+
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: EL
+      versions:
+        - 7
+
+  galaxy_tags: []
