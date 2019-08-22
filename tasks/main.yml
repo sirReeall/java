@@ -1,13 +1,18 @@
 ---
 # tasks require to install openJDK
 
-# check if Java is already installed
+# check if Java is already installed for impotence
 
 - name: check if java is installed
-  command: java -version
+  stat: 
+    path: "{{ java_install_folder }}/bin/java"
   register: isInstalled
   ignore_errors: true
   changed_when: false
+  failed_when: false
+
+- debug:
+    msg: "{{ isInstalled }}"
 
 - name: installing java
   block:
@@ -29,4 +34,9 @@
         dest: '/etc/profile.d/java.sh'
         owner: root
         group: root
-  when: not isInstalled_version in isInstalled.stderr
+    
+    # - name: source Java environment variabled
+    #   command: bash -c 'source /etc/profile.d/java.sh'
+  # run when "check if java is installed" or
+  # when java -version string does not contain the version we are currently installing
+  when: isInstalled.stderr is not defined or (not isInstalled_version in isInstalled.stderr)
