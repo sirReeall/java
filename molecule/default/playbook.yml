@@ -4,4 +4,4 @@
   become: true
 
   roles:
-    - role: sirreeall.java
+    - role: java

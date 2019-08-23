@@ -4,7 +4,7 @@
 # check if Java is already installed for impotence
 
 - name: check if java is installed
-  stat: 
+  stat:
     path: "{{ java_install_folder }}/bin/java"
   register: isInstalled
   ignore_errors: true
@@ -34,9 +34,4 @@
         dest: '/etc/profile.d/java.sh'
         owner: root
         group: root
-    
-    # - name: source Java environment variabled
-    #   command: bash -c 'source /etc/profile.d/java.sh'
-  # run when "check if java is installed" or
-  # when java -version string does not contain the version we are currently installing
-  when: isInstalled.stderr is not defined or (not isInstalled_version in isInstalled.stderr)
+  when: not isInstalled.stat.exists
