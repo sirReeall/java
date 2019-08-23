@@ -1,6 +1,8 @@
 java
 ============
 
+[![Build Status](https://travis-ci.org/sirReeall/java.svg?branch=master)](https://travis-ci.org/sirReeall/java)
+
 This role will install the specified Java OpenJDK required by ACS 6.1 by default.
 
 The role has a number of variables that can be specified.
